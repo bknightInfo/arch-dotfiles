@@ -37,13 +37,6 @@ zinit cdreplay -q
 # Colors
 autoload -Uz colors && colors
 
-# Add in snippets - conflicts with aliases
-#zinit snippet OMZP::git
-#zinit snippet OMZP::sudo
-#zinit snippet OMZP::archlinux
-#zinit snippet OMZP::command-not-found
-#zinit snippet OMZP::common-aliases
-
 # Keybindings
 #bindkey -e
 #bindkey '^p' history-search-backward
@@ -88,7 +81,9 @@ then
 else
    fastfetch
 fi
+
+#Autorun hyprland
 if ! pgrep -x "Hyprland" > /dev/null
-then 
+then
   Hyprland
 fi
