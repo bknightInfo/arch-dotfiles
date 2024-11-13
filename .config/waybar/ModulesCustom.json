@@ -1,0 +1,61 @@
+{
+  // Rofi Application Launcher
+  "custom/app-menu": {
+    "format": "   ",
+    "on-click": "rofi -show drun -replace",
+    "on-click-right": "~/.config/hypr/scripts/keybindings.sh",
+    "tooltip": false
+  },
+
+  // Power Menu
+  "custom/power": {
+    "format": "   ",
+    "tooltip-format": "Powermenu",
+    "on-click": "wlogout -b 4",
+    "tooltip": false
+  },
+
+  // System
+  "custom/system": {
+    "format": "",
+    "tooltip": false
+  },
+
+  // Updates Count
+  "custom/updater": {
+    "format": "  {}",
+    "tooltip-format": "{}",
+    "escape": true,
+    "return-type": "json",
+    "interval": 43200,
+    "exec": "~/dotfiles/scripts/updates.sh",
+    "restart-interval": 60,
+    "on-click": "kitty -e ~/dotfiles/scripts/installupdates.sh",
+    "tooltip-format": "Check Updates"
+  },
+
+  // Visualisation
+  "custom/cava": {
+    "exec": "sh ~/.config/hypr/scripts/cava.sh",
+    "format": "{}",
+    "tooltip": false,
+    "on-click": "kitty -e cava",
+    "layer": "below",
+    "output": "all"
+  },
+
+  //Weather
+  "custom/weather": {
+    "format": "{}°",
+    "tooltip": true,
+    "interval": 3600,
+    "exec": "wttrbar --location Geelong --custom-indicator '{ICON} {weatherDesc} {temp_C}'",
+    "return-type": "json"
+  },
+
+  "custom/separator#blank": {
+    "format": " ",
+    "interval": "once",
+    "tooltip": false
+  }
+}

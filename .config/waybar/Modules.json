@@ -27,20 +27,15 @@
     "separate-outputs": true
   },
 
-  // Rofi Application Launcher
-  "custom/appmenu": {
-    "format": " ",
-    "on-click": "rofi -show drun -replace",
-    "on-click-right": "~/.config/hypr/scripts/keybindings.sh",
-    "tooltip": false
-  },
-
-  // Power Menu
-  "custom/exit": {
-    "format": "",
-    "tooltip-format": "Powermenu",
-    "on-click": "wlogout -b 4",
-    "tooltip": false
+  // Taskbar
+  "wlr/taskbar": {
+    "format": "{icon}",
+    "icon-size": 18,
+    "tooltip-format": "{title}",
+    "on-click": "activate",
+    "on-click-middle": "close"
+    //    "ignore-list": ["Alacritty", "kitty"],
+    //    "rewrite": {"Firefox Web Browser": "Firefox"}
   },
 
   // Keyboard State
@@ -67,12 +62,6 @@
     "format-alt": "{:%Y-%m-%d}"
   },
 
-  // System
-  "custom/system": {
-    "format": "",
-    "tooltip": false
-  },
-
   // CPU
   "cpu": {
     "format": "/ C {usage}% ",
@@ -95,17 +84,6 @@
 
   "hyprland/language": {
     "format": "/ K {short}"
-  },
-
-  // Group Hardware
-  "group/hardware": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 300,
-      "children-class": "not-memory",
-      "transition-left-to-right": false
-    },
-    "modules": ["custom/system", "disk", "cpu", "memory", "hyprland/language"]
   },
 
   // Network
@@ -184,36 +162,5 @@
       "deactivated": ""
     },
     "on-click-right": "hyprlock"
-  },
-
-  // Updates Count
-  "custom/updates": {
-    "format": "  {}",
-    "tooltip-format": "{}",
-    "escape": true,
-    "return-type": "json",
-    "exec": "~/dotfiles/scripts/updates.sh",
-    "restart-interval": 60,
-    "on-click": "kitty -e ~/dotfiles/scripts/installupdates.sh",
-    "tooltip": false
-  },
-
-  // Visualisation
-  "custom/cava": {
-    "exec": "sh ~/.config/hypr/scripts/cava.sh",
-    "format": "{}",
-    "tooltip": false,
-    "on-click": "kitty -e cava",
-    "layer": "below",
-    "output": "all"
-  },
-
-  //Weather
-  "custom/weather-wttrbar": {
-    "format": "{}°",
-    "tooltip": true,
-    "interval": 3600,
-    "exec": "wttrbar --location Geelong --custom-indicator '{ICON} {weatherDesc} {temp_C}'",
-    "return-type": "json"
   }
 }

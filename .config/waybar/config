@@ -1,22 +1,25 @@
 {
-    // "layer": "top", // Waybar at top layer
-
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
-
-    "height": 30, // Waybar height (to be removed for auto height)
+    "layer": "bottom",
+    "position": "top",
+    //"height": 30, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
-
-    "spacing": 4, // Gaps between modules (4px)
-    // Choose the order of the modules
+    "margin-top": 6,
+    "margin-left": 5,
+    "margin-right": 5,
+    "margin-bottom": 6,
+   // "spacing": 3, // Gaps between modules (9px)
 
     // Load Modules
     "include": [
-        "~/.config/ml4w/settings/waybar-quicklinks.json",
-        "~/.config/waybar/modules.json"
+        "~/.config/waybar/Modules.json",
+        "~/.config/waybar/ModulesCustom.json",
+        "~/.config/waybar/ModulesGroup.json"
     ],
     "modules-left": [
-        "custom/appmenu",
+        "custom/app-menu",
+        "custom/separator#blank",
         "wlr/taskbar",
+        "custom/separator#blank",
         "hyprland/window"
     ],
     "modules-center": [
@@ -24,15 +27,15 @@
     ],
     "modules-right": [
         "custom/cava",
+        "custom/separator#blank",
         "pulseaudio",
-        "custom/weather-wttrbar",
-//        "cpu",
-//        "memory",
-//        "keyboard-state",
-//        "battery",
-        "custom/updates",
+        "custom/separator#blank",
+        "custom/weather",
+        "custom/separator#blank",
+        "custom/updater",
+        "custom/separator#blank",
         "clock",
-        "tray",
-        "custom/exit"
+        "custom/separator#blank",
+        "custom/power"
     ]
 }
