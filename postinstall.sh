@@ -23,6 +23,8 @@ info "Install core applications"
 sudo pacman -S --needed git base-devel neovim curl wget unzip fastfetch mesa vulkan-radeon libva-mesa-driver wayland wayland-protocols \
 xorg-xwayland hyprland xdg-user-dirs xdg-desktop-portal xdg-desktop-portal-hyprland uwsm kitty vulkan-tools mesa-utils stow hypridle
 
+xdg-user-dirs
+
 info "Setting up AUR"
 if ! command_exists paru; then
     info "Installing yay AUR helper..."
