@@ -65,10 +65,6 @@ stow --adopt -d ~/.local/share/dotfiles/ -t ~/ .
 
 ./scripts/clean-dead-symlinks.sh --delete
 
-rm  ~/.zshrc
-ln -s ~/.mydotfiles/dotfiles/kitty ~/.config/
-ln -s ~/.mydotfiles/dotfiles/zshrc/.zshrc ~/.
-
 #media
 info "installing media application..."
 sudo pacman -S --needed handbrake mpv celluloid qt5-wayland
@@ -87,8 +83,9 @@ paru -S --needed onlyoffice-bin
 #zsh
 info "installing zsh config..."
 sudo pacman -S --needed bat eza zoxide zsh fnm
+ln -s ~/.config/zshrc/.zshrc ~/.
 sudo pacman -Rns fish
-sudo chsh -s $(which zsh)
+chsh -s /usr/bin/zsh
 
 #greetd
 info "installing greet config..."
