@@ -20,7 +20,7 @@ info "Updating system..."
 sudo pacman -Syu --noconfirm
 
 info "Install core applications"
-sudo pacman -S --needed git base-devel wget unzip vulkan-radeon xorg-xwayland hyprland xdg-user-dirs uwsm
+sudo pacman -S --needed git base-devel wget unzip vulkan-radeon xorg-xwayland hyprland xdg-user-dirs uwsm stow
 
 xdg-user-dirs-update
 
