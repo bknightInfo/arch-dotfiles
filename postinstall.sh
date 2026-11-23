@@ -49,6 +49,7 @@ mkdir -p ~/.local/share/dotfiles/{.config,.local,Pictures}
 # --- move folders from .config to dots files ---
 mv ~/.config/hypr ~/.local/share/dotfiles/.config
 mv ~/.config/lucid ~/.local/share/dotfiles/.config
+mv ~/.config/quickshell ~/.local/share/dotfiles/.config
 
 # --- move folders from .config to dots files ---
 cp -fr mydots/fastfetch ~/.local/share/dotfiles/.config
@@ -66,7 +67,7 @@ stow --adopt -d ~/.local/share/dotfiles/ -t ~/ .
 cp -f custom/hypridle.conf ~/.local/share/dotfiles/.config/hypr/
 cp -f custom/lucid-startup.lua ~/.local/share/dotfiles/.config/hypr/
 cp -f custom/keybinds.json ~/.local/share/dotfiles/.config/lucid/
-cp -f custom/keybinds.json ~/.local/share/dotfiles/.config/quickshell/lucidprefs/
+cp -f custom/prefs.json ~/.local/share/dotfiles/.config/quickshell/lucidprefs/
 
 ./scripts/clean-dead-symlinks.sh --delete
 
