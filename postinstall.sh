@@ -20,10 +20,9 @@ info "Updating system..."
 sudo pacman -Syu --noconfirm
 
 info "Install core applications"
-sudo pacman -S --needed git base-devel neovim curl wget unzip fastfetch mesa vulkan-radeon libva-mesa-driver wayland wayland-protocols \
-xorg-xwayland hyprland xdg-user-dirs xdg-desktop-portal xdg-desktop-portal-hyprland uwsm kitty vulkan-tools mesa-utils stow hypridle
+sudo pacman -S --needed git base-devel wget unzip vulkan-radeon xorg-xwayland hyprland xdg-user-dirs uwsm
 
-xdg-user-dirs
+xdg-user-dirs-update
 
 info "Setting up AUR"
 if ! command_exists paru; then
@@ -41,6 +40,9 @@ fi
 info "Install lucid shell..."
 git clone https://github.com/Sn3akyy1/lucid.git && cd lucid && ./install.sh --no-apps --with-hypr --no-sddm
 
+info "Remove unwanted applications from lucid shell..."
+suod pacman -Rns gnome-calculator kdeconnect upower xdg-user-dirs wf-recorder tesseract tesseract-data-eng songrec
+
 info "move folders from .config to dots files location..."
 mkdir -p ~/.local/share/dotfiles/{.config,.local,Pictures}
 
@@ -53,17 +55,18 @@ cp -r mydots/fastfetch ~/.local/share/dotfiles/.config
 cp -r mydots/kitty ~/.local/share/dotfiles/.config
 cp -r mydots/zshrc ~/.local/share/dotfiles/.config
 
-if [ -d ".config/fastfetch" ]; then rm -rf ".config/fastfetch"; fi
-if [ -d ".config/kitty" ]; then rm -rf ".config/kitty"; fi
-if [ -d ".config/fish" ]; then rm -rf ".config/fish"; fi
-if [ -d ".config/zshrc" ]; then rm -rf ".config/zshrc"; fi
+if [ -d "$HOME/.config/fastfetch" ]; then rm -rf "$HOME/.config/fastfetch"; fi
+if [ -d "$HOME/.config/kitty" ]; then rm -rf "$HOME/.config/kitty"; fi
+if [ -d "$HOME/.config/fish" ]; then rm -rf "$HOME/.config/fish"; fi
+if [ -d "$HOME/.config/zshrc" ]; then rm -rf "$HOME/.config/zshrc"; fi
+
+info "create symbolic links!..."
+stow --adopt -d ~/.local/share/dotfiles/ -t ~/ .
 
 cp -f custom/hypridle.conf ~/.local/share/dotfiles/.config/hypr/
 cp -f custom/lucid-startup.lua ~/.local/share/dotfiles/.config/hypr/
 cp -f custom/keybinds.json ~/.local/share/dotfiles/.config/lucid/
-
-info "create symbolic links!..."
-stow --adopt -d ~/.local/share/dotfiles/ -t ~/ .
+cp -f custom/keybinds.json ~/.local/share/dotfiles/.config/quickshell/lucidprefs/
 
 ./scripts/clean-dead-symlinks.sh --delete
 
@@ -79,7 +82,7 @@ sudo modprobe sg
 
 #misc
 info "installing misc applications..."
-sudo pacman -S --needed yazi
+sudo pacman -S --needed stow
 paru -S --needed onlyoffice-bin
 
 #zsh
@@ -88,6 +91,10 @@ sudo pacman -S --needed bat eza zoxide zsh fnm
 ln -s ~/.config/zshrc/.zshrc ~/.
 sudo pacman -Rns fish
 chsh -s /usr/bin/zsh
+
+info "installing dev apps..."
+sudo pacman -S --needed neovim yazi zed
+paru -S --needed github-desktop-bin
 
 #greetd
 info "installing greet config..."
