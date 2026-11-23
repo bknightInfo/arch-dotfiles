@@ -41,7 +41,7 @@ info "Install lucid shell..."
 git clone https://github.com/Sn3akyy1/lucid.git && cd lucid && ./install.sh --no-apps --with-hypr --no-sddm
 
 info "Remove unwanted applications from lucid shell..."
-suod pacman -Rns gnome-calculator kdeconnect upower xdg-user-dirs wf-recorder tesseract tesseract-data-eng songrec
+sudo pacman -Rns gnome-calculator kdeconnect upower xdg-user-dirs wf-recorder tesseract tesseract-data-eng songrec
 
 info "move folders from .config to dots files location..."
 mkdir -p ~/.local/share/dotfiles/{.config,.local,Pictures}
