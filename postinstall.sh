@@ -51,9 +51,9 @@ mv ~/.config/hypr ~/.local/share/dotfiles/.config
 mv ~/.config/lucid ~/.local/share/dotfiles/.config
 
 # --- move folders from .config to dots files ---
-cp -r mydots/fastfetch ~/.local/share/dotfiles/.config
-cp -r mydots/kitty ~/.local/share/dotfiles/.config
-cp -r mydots/zshrc ~/.local/share/dotfiles/.config
+cp -fr mydots/fastfetch ~/.local/share/dotfiles/.config
+cp -fr mydots/kitty ~/.local/share/dotfiles/.config
+cp -fr mydots/zshrc ~/.local/share/dotfiles/.config
 
 if [ -d "$HOME/.config/fastfetch" ]; then rm -rf "$HOME/.config/fastfetch"; fi
 if [ -d "$HOME/.config/kitty" ]; then rm -rf "$HOME/.config/kitty"; fi
