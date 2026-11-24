@@ -38,7 +38,7 @@ else
 fi
 
 info "Install lucid shell..."
-git clone https://github.com/Sn3akyy1/lucid.git && cd lucid && ./install.sh --no-apps --with-hypr --no-sddm
+git clone https://github.com/Sn3akyy1/lucid.git && cd lucid && ./install.sh --no-apps --with-hypr --no-sddm && cd ..
 
 info "Remove unwanted applications from lucid shell..."
 sudo pacman -Rns gnome-calculator kdeconnect upower xdg-user-dirs wf-recorder tesseract tesseract-data-eng songrec
@@ -52,17 +52,14 @@ mv ~/.config/lucid ~/.local/share/dotfiles/.config
 mv ~/.config/quickshell ~/.local/share/dotfiles/.config
 
 # --- move folders from .config to dots files ---
-cp -fr mydots/fastfetch ~/.local/share/dotfiles/.config
-cp -fr mydots/kitty ~/.local/share/dotfiles/.config
-cp -fr mydots/zshrc ~/.local/share/dotfiles/.config
+cp -av mydots/fastfetch ~/.local/share/dotfiles/.config
+cp -av mydots/kitty ~/.local/share/dotfiles/.config
+cp -av mydots/zshrc ~/.local/share/dotfiles/.config
 
 if [ -d "$HOME/.config/fastfetch" ]; then rm -rf "$HOME/.config/fastfetch"; fi
 if [ -d "$HOME/.config/kitty" ]; then rm -rf "$HOME/.config/kitty"; fi
 if [ -d "$HOME/.config/fish" ]; then rm -rf "$HOME/.config/fish"; fi
 if [ -d "$HOME/.config/zshrc" ]; then rm -rf "$HOME/.config/zshrc"; fi
-
-info "create symbolic links!..."
-stow --adopt -d ~/.local/share/dotfiles/ -t ~/ .
 
 cp -f custom/hypridle.conf ~/.local/share/dotfiles/.config/hypr/
 cp -f custom/lucid-startup.lua ~/.local/share/dotfiles/.config/hypr/
@@ -70,6 +67,9 @@ cp -f custom/keybinds.json ~/.local/share/dotfiles/.config/lucid/
 cp -f custom/prefs.json ~/.local/share/dotfiles/.config/quickshell/lucidprefs/
 
 ./scripts/clean-dead-symlinks.sh --delete
+
+info "create symbolic links!..."
+stow --adopt -d ~/.local/share/dotfiles/ -t ~/ .
 
 #media
 info "installing media application..."
