@@ -84,11 +84,11 @@ sudo modprobe sg
 #misc
 info "installing misc applications..."
 sudo pacman -S --needed stow
-paru -S --needed onlyoffice-bin
+paru -S --needed onlyoffice-bin brave-origin-bin
 
 #zsh
 info "installing zsh config..."
-sudo pacman -S --needed bat eza zoxide zsh fnm
+sudo pacman -S --needed bat eza zoxide zsh fnm fzf
 ln -s ~/.config/zshrc/.zshrc ~/.
 sudo pacman -Rns fish
 chsh -s /usr/bin/zsh
