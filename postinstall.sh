@@ -20,12 +20,12 @@ info "Updating system..."
 sudo pacman -Syu --noconfirm
 
 info "Install core applications"
-sudo pacman -S --needed git base-devel wget unzip vulkan-radeon xorg-xwayland hyprland xdg-user-dirs uwsm stow
+sudo pacman -S --needed git base-devel wget unzip vulkan-radeon hyprland xdg-user-dirs uwsm stow
 
 xdg-user-dirs-update
 
 info "Setting up AUR"
-if ! command_exists paru; then
+if ! command -v paru &>/dev/null; then
     info "Installing yay AUR helper..."
     git clone https://aur.archlinux.org/paru.git paru
     cd paru
