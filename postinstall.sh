@@ -27,10 +27,7 @@ xdg-user-dirs-update
 info "Setting up AUR"
 if ! command -v paru &>/dev/null; then
     info "Installing yay AUR helper..."
-    git clone https://aur.archlinux.org/paru.git paru
-    cd paru
-    makepkg -si --noconfirm
-    cd ..
+    git clone https://aur.archlinux.org/paru.git paru && cd paru && makepkg -si --noconfirm && cd ..
     rm -rf paru
     success "paru installed"
 else
